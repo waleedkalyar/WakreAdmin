@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorWhiteBG"
     tools:context=".fragments.main.AccountsVerificationFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <EditText
+    android:id="@+id/edSearch"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/_12sdp"
+    android:paddingBottom="@dimen/_12sdp"
+    android:paddingLeft="@dimen/_16sdp"
+    android:paddingRight="@dimen/_12sdp"
+    android:fontFamily="@font/montserrat_medium"
+    android:textColor="@color/colorBlack"
+    android:textColorHint="@color/colorGreyDark"
+    android:hint="@string/search"
+    android:layout_margin="@dimen/_16sdp"
+    android:inputType="phone"
+    android:textSize="@dimen/_10ssp"
+    android:drawableRight="@drawable/ic_search"
+    android:background="@drawable/bg_search"/>
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
-</FrameLayout>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_account_verification"/>
+</LinearLayout>
