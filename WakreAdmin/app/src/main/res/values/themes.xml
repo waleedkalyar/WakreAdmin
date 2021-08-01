@@ -1,0 +1,30 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.WakreAdmin" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorBlue</item>
+        <item name="colorPrimaryVariant">@color/colorYellow</item>
+        <item name="colorOnPrimary">@color/colorGold</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/colorBlue</item>
+        <item name="colorSecondaryVariant">@color/colorYellow</item>
+        <item name="colorOnSecondary">@color/colorGold</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/colorBlue</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+
+    <style name="TextInputStyle" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxCornerRadiusTopStart">@dimen/_4sdp</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/_4sdp</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/_4sdp</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/_4sdp</item>
+        <item name="boxBackgroundColor">@color/colorYellowLight</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+    </style>
+
+
+
+</resources>
