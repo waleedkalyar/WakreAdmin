@@ -2,22 +2,20 @@ package com.jeuxdevelopers.wakreadmin.fragments.main;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.jeuxdevelopers.wakreadmin.R;
-import com.jeuxdevelopers.wakreadmin.databinding.FragmentAdminProfileBinding;
+import androidx.fragment.app.Fragment;
+
+import com.jeuxdevelopers.wakreadmin.databinding.FragmentAppUsersBinding;
 
 
-public class AdminProfileFragment extends Fragment {
+public class AppUsersFragment extends Fragment {
     private Context context;
-    private FragmentAdminProfileBinding binding;
+    private FragmentAppUsersBinding binding;
 
-    public AdminProfileFragment() {
+    public AppUsersFragment() {
         // Required empty public constructor
     }
 
@@ -26,7 +24,7 @@ public class AdminProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentAdminProfileBinding.inflate(inflater, container, false);
+        binding = FragmentAppUsersBinding.inflate(inflater, container, false);
         init();
         return binding.getRoot();
     }

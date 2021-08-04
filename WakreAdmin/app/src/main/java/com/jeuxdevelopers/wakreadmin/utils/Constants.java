@@ -1,9 +1,9 @@
 package com.jeuxdevelopers.wakreadmin.utils;
 
 public class Constants {
-    public static final int BOTTOM_HOME = 1;
-    public static final int BOTTOM_SCAN = 2;
-    public static final int BOTTOM_TRANSACTIONS = 3;
+    public static final int BOTTOM_VERIFICATIONS = 1;
+    public static final int BOTTOM_TRANSACTION_INCOME = 2;
+    public static final int BOTTOM_APP_USERS = 3;
     public static final int BOTTOM_PROFILE = 4;
 
     public static final int BOTTOM_QR_GENERATE = 5;

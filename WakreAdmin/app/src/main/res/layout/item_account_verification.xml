@@ -22,6 +22,7 @@
                 android:layout_weight="0.3">
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/cvProfile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@color/colorGrey" />
@@ -49,6 +50,7 @@
                     android:text="@string/shop_name" />
 
                 <TextView
+                    android:id="@+id/tvShopName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_12sdp"
@@ -59,6 +61,7 @@
                     android:textSize="@dimen/_18ssp" />
 
                 <TextView
+                    android:id="@+id/tvPhone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_12sdp"
@@ -84,6 +87,7 @@
             android:orientation="horizontal">
 
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_medium"
@@ -91,6 +95,7 @@
                 android:textColor="@color/colorBlack" />
 
             <TextView
+                android:id="@+id/tvUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_4sdp"
@@ -114,6 +119,7 @@
                 android:textColor="@color/colorBlack" />
 
             <TextView
+                android:id="@+id/tvAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_4sdp"
@@ -122,6 +128,7 @@
                 android:text="22-A link road street no 4 m2 lahore" />
         </LinearLayout>
      <com.google.android.material.button.MaterialButton
+         android:id="@+id/btnApprove"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:layout_marginTop="@dimen/_12sdp"
@@ -131,6 +138,7 @@
          android:textAllCaps="false"
          android:backgroundTint="@color/colorGreen"/>
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnReject"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_6sdp"

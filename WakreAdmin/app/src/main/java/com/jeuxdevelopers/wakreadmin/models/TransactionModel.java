@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TransactionModel implements Serializable {
     private String transactionId, notes;
-    private double amount;
+    private double amount,tax;
     private TransactionUser sender;
     private TransactionUser receiver;
     private TransactionType type;
@@ -101,5 +101,13 @@ public class TransactionModel implements Serializable {
 
     public void setUsers(List<String> users) {
         this.users = users;
+    }
+
+    public double getTax() {
+        return tax;
+    }
+
+    public void setTax(double tax) {
+        this.tax = tax;
     }
 }
