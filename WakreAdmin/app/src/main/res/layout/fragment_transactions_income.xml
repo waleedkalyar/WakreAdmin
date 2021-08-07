@@ -8,28 +8,41 @@
     android:background="@color/colorWhiteBG"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.main.TransactionsIncomeFragment">
-
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:textAllCaps="false"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/logout"
+        android:textColor="@color/colorWhite"
+        android:drawableLeft="@drawable/ic_logout"
+        android:drawableTint="@color/colorWhite"/>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/_12sdp"
-        app:cardCornerRadius="@dimen/_6sdp">
-
+        android:layout_marginBottom="-3dp"
+        android:layout_marginTop="@dimen/_6sdp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="@dimen/_32sdp"
-            android:paddingTop="@dimen/_16sdp"
-            android:paddingRight="@dimen/_32sdp"
-            android:paddingBottom="@dimen/_16sdp">
+            android:paddingLeft="@dimen/_16sdp"
+            android:paddingTop="@dimen/_8sdp"
+            android:paddingRight="@dimen/_16sdp"
+            android:paddingBottom="@dimen/_8sdp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_regular"
-                android:text="@string/earns" />
+                android:text="@string/available" />
 
             <TextView
                 android:id="@+id/tvAmount"
@@ -40,9 +53,102 @@
                 android:fontFamily="@font/sf_pro_display_regular"
                 android:textStyle="bold"
                 android:text="25.55$"
-                android:textColor="@color/colorGreen"
+                android:textColor="@color/colorGold"
                 android:textSize="@dimen/_16ssp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
+        <ImageButton
+            android:id="@+id/btnAddAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add"
+            app:layout_anchor="@id/cardAmount"
+            android:elevation="@dimen/_2sdp"
+            android:background="@drawable/bg_circle"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:layout_marginTop="-3dp"
+        android:layout_marginRight="8dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:padding="@dimen/_8sdp">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="@string/spends"/>
+                <TextView
+                    android:id="@+id/tvSpends"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorRed"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="0.0$"/>
+            </LinearLayout>
+            <View
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGrey"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="@string/deposits"/>
+                <TextView
+                    android:id="@+id/tvDeposits"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorGreen"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="0.0$"/>
+            </LinearLayout>
+            <View
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGrey"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="@string/taxs"/>
+
+                <TextView
+                    android:id="@+id/tvTaxes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="0.0$"
+                    android:textColor="@color/colorBlue" />
+            </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
     <EditText
@@ -50,6 +156,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/_12sdp"
+        android:visibility="gone"
         android:paddingBottom="@dimen/_12sdp"
         android:paddingLeft="@dimen/_16sdp"
         android:paddingRight="@dimen/_12sdp"
@@ -57,14 +164,16 @@
         android:textColor="@color/colorBlack"
         android:textColorHint="@color/colorGreyDark"
         android:hint="@string/search"
-        android:layout_margin="@dimen/_16sdp"
+        android:layout_margin="@dimen/_12sdp"
         android:inputType="phone"
         android:textSize="@dimen/_10ssp"
         android:drawableRight="@drawable/ic_search"
         android:background="@drawable/bg_search"/>
 <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recyclerTransactions"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/_8sdp"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     tools:listitem="@layout/item_tax_transaction"/>
 

@@ -1,5 +1,6 @@
 package com.jeuxdevelopers.wakreadmin.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.Spannable;
 import android.text.style.ForegroundColorSpan;
@@ -13,8 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.jeuxdevelopers.wakreadmin.R;
-import com.jeuxdevelopers.wakreadmin.databinding.ItemAccountVerificationBinding;
-import com.jeuxdevelopers.wakreadmin.enums.AccountState;
+import com.jeuxdevelopers.wakreadmin.databinding.ItemUserBinding;
 import com.jeuxdevelopers.wakreadmin.models.UserModel;
 
 import java.util.ArrayList;
@@ -22,15 +22,14 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class VerificationsAdapter extends RecyclerView.Adapter<VerificationsAdapter.VerificationViewHolder> implements Filterable {
+public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.UserViewHolder> implements Filterable {
     private Context context;
     private List<UserModel> data;
     private List<UserModel> filteredData;
-    private VerificationListener listener;
     private String filterQuery;
+    private UserSelectListener listener;
 
-
-    public VerificationsAdapter(Context context, List<UserModel> data, VerificationListener listener) {
+    public UsersListAdapter(Context context, List<UserModel> data, UserSelectListener listener) {
         this.context = context;
         this.data = data;
         filteredData = data;
@@ -39,57 +38,46 @@ public class VerificationsAdapter extends RecyclerView.Adapter<VerificationsAdap
     }
 
     public void setData(List<UserModel> data) {
-        this.data = data;
-        this.filteredData = data;
+        filteredData = data;
         filterQuery = "";
-        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
-    public VerificationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new VerificationViewHolder(ItemAccountVerificationBinding.inflate(LayoutInflater.from(context), parent, false));
+    public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new UserViewHolder(ItemUserBinding.inflate(LayoutInflater.from(context), parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull VerificationViewHolder holder, int position) {
-        holder.bind(filteredData.get(position));
+    public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
+        holder.bind(data.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return filteredData.size();
+        return data.size();
     }
 
 
-    class VerificationViewHolder extends RecyclerView.ViewHolder {
-        ItemAccountVerificationBinding binding;
+    class UserViewHolder extends RecyclerView.ViewHolder {
+        private ItemUserBinding binding;
 
-        public VerificationViewHolder(@NonNull ItemAccountVerificationBinding binding) {
+        public UserViewHolder(@NonNull ItemUserBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
 
+        @SuppressLint("DefaultLocale")
         void bind(UserModel model) {
             Glide.with(context).load(model.getProfileImageUrl()).into(binding.cvProfile);
-            binding.tvShopName.setText(model.getShopName());
-            binding.tvUserName.setText(model.getName());
-            binding.tvAddress.setText(model.getAddress());
-            if (filterQuery.isEmpty()) {
+            binding.tvName.setText(model.getName());
+            binding.chipAmount.setText(String.format("%.2f$", model.getAmount()));
+            if (filterQuery.isEmpty())
                 binding.tvPhone.setText(model.getPhone());
-            } else {
-                setHighlightedName(model.getPhone());
-            }
-
-
-            binding.btnApprove.setOnClickListener(v -> {
-                listener.onVerificationChange(AccountState.Active,model);
-            });
-
-            binding.btnReject.setOnClickListener(v -> {
-                listener.onVerificationChange(AccountState.Declined,model);
-            });
+            else setHighlightedName(model.getPhone());
+            binding.linBack.setOnClickListener(v -> listener.onUserClick(model));
         }
+
 
         private void setHighlightedName(String description) {
             Spannable spanText = Spannable.Factory.getInstance().newSpannable(description.toLowerCase());
@@ -105,10 +93,9 @@ public class VerificationsAdapter extends RecyclerView.Adapter<VerificationsAdap
         }
     }
 
-    public interface VerificationListener {
-        void onVerificationChange(AccountState state,UserModel model);
+    public interface UserSelectListener {
+        void onUserClick(UserModel model);
     }
-
 
     @Override
     public Filter getFilter() {

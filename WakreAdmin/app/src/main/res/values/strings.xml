@@ -44,5 +44,21 @@
     <string name="transaction_id">Transaction ID</string>
     <string name="phone">Phone</string>
     <string name="tax">Tax</string>
+    <string name="receiver_info">Receiver Information</string>
+    <string name="sender_info">Sender Information</string>
+    <string name="account_holder_name">Account Holder Name</string>
+    <string name="account_type">Account Type</string>
+    <string name="account_state">Account State</string>
+    <string name="add_amount">Add Amount</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="cancel">Cancel</string>
+    <string name="done">Done</string>
+    <string name="user_amount">User Amount</string>
+    <string name="update_state">Update State</string>
+    <string name="logout">Logout</string>
+    <string name="available">Available</string>
+    <string name="spends">Spends</string>
+    <string name="deposits">Deposits</string>
+    <string name="taxs">Tax\'s</string>
 
 </resources>

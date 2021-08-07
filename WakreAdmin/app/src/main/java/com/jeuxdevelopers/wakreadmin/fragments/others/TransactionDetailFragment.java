@@ -46,6 +46,7 @@ public class TransactionDetailFragment extends Fragment {
         preferences = new MyPreferences(context);
         assert getArguments() != null;
         type = getArguments().getString(Constants.TYPE);
+        model = (TransactionModel) getArguments().getSerializable(Constants.TRANSACTION_MODEL);
 
 
         setViews();
@@ -54,13 +55,20 @@ public class TransactionDetailFragment extends Fragment {
 
     @SuppressLint({"SetTextI18n", "LongLogTag", "DefaultLocale"})
     private void setViews() {
-        binding.tvAmount.setText(model.getAmount() + "$");
+        binding.tvAmount.setText(String.format("%.2f", model.getAmount()) + "$");
         if (model.getReceiver() != null) {
             binding.tvCustomerName.setText(model.getReceiver().getName());
             binding.tvCustomerPhone.setText(model.getReceiver().getPhone());
         } else {
             binding.tvCustomerName.setText("Unknown");
             binding.tvCustomerPhone.setText("Unknown");
+        }
+        if (model.getSender() != null) {
+            binding.tvSenderName.setText(model.getSender().getName());
+            binding.tvSenderPhone.setText(model.getSender().getPhone());
+        } else {
+            binding.tvSenderName.setText("Unknown");
+            binding.tvSenderPhone.setText("Unknown");
         }
 
         binding.tvId.setText(model.getTransactionId());
@@ -71,32 +79,9 @@ public class TransactionDetailFragment extends Fragment {
         }
 
         if (type == null) {
-//            Log.d(TAG, "setViews: Type is null open bt merchant");
-//            if (model.getType() == TransactionType.DIRECT_TRANSFER && preferences.getCurrentUser().getUserType() == UserType.Merchant) {
-//                Log.d(TAG, "setViews: Set outgoing");
-//                binding.tvType.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_upward, 0, 0, 0);
-//            } else {
-//                Log.d(TAG, "setViews: set incoming");
-//                binding.tvType.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_downward, 0, 0, 0);
-//            }
-//        } else {
-//            if (model.getType() == TransactionType.DIRECT_TRANSFER && preferences.getCurrentUser().getUserType() == UserType.Customer) {
-//                binding.tvType.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_downward, 0, 0, 0);
-//            } else {
-//                binding.tvType.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_upward, 0, 0, 0);
-//            }
-//        }
-
-            // set arrow with color
-//        if (model.getType() == TransactionType.GENERATE_QR && preferences.getCurrentUser().getUserType() == UserType.Customer) {
-//            binding.tvType.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_upward, 0, 0, 0);
-//        } else {
-//            binding.tvType.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_downward, 0, 0, 0);
-//        }
-
             binding.tvState.setText(model.getState().name());
             binding.tvDate.setText(Utils.getDateFromMillies(model.getDate()));
-            Log.d(TAG, "setViews: Five Percent => " + Utils.get20PercentOfAmount(model.getAmount()));
+            Log.d(TAG, "setViews: 20 Percent => " + Utils.get20PercentOfAmount(model.getAmount()));
             binding.tvTax.setText("(20%) " + String.format("%.2f$", Utils.get20PercentOfAmount(model.getAmount())));
 
         }

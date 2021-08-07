@@ -14,10 +14,28 @@
         android:id="@+id/appUsersFragment"
         android:name="com.jeuxdevelopers.wakreadmin.fragments.main.AppUsersFragment"
         android:label="fragment_app_users"
-        tools:layout="@layout/fragment_app_users" />
+        tools:layout="@layout/fragment_app_users" >
+        <action
+            android:id="@+id/action_appUsersFragment_to_userDetailFragment"
+            app:destination="@id/userDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/transactionsIncomeFragment"
         android:name="com.jeuxdevelopers.wakreadmin.fragments.main.TransactionsIncomeFragment"
         android:label="fragment_transactions_income"
-        tools:layout="@layout/fragment_transactions_income" />
+        tools:layout="@layout/fragment_transactions_income" >
+        <action
+            android:id="@+id/action_transactionsIncomeFragment_to_transactionDetailFragment"
+            app:destination="@id/transactionDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transactionDetailFragment"
+        android:name="com.jeuxdevelopers.wakreadmin.fragments.others.TransactionDetailFragment"
+        android:label="TransactionDetailFragment"
+        tools:layout="@layout/fragment_transaction_detail"/>
+    <fragment
+        android:id="@+id/userDetailFragment"
+        android:name="com.jeuxdevelopers.wakreadmin.fragments.others.UserDetailFragment"
+        android:label="UserDetailFragment"
+        tools:layout="@layout/fragment_user_detail"/>
 </navigation>

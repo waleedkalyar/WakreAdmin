@@ -29,4 +29,8 @@ public class Constants {
     public static final String TRANSACTION_USERS = "users";
     public static final String TRANSACTION_DATE = "date";
 
+    public static final String USERS_COLLECTION = "Users";
+    public static final String ACCOUNT_STATE = "accountState";
+    public static final String USER_MODEL = "user-model";
+    public static final String ADMIN_DEPOSIT = "deposits";
 }

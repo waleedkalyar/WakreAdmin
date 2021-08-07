@@ -4,7 +4,9 @@ package com.jeuxdevelopers.wakreadmin.models;
 import com.jeuxdevelopers.wakreadmin.enums.AccountState;
 import com.jeuxdevelopers.wakreadmin.enums.UserType;
 
-public class UserModel {
+import java.io.Serializable;
+
+public class UserModel implements Serializable {
     private String uId, name, phone, address, shopName, profileImageUrl;
     private UserType userType;
     private AccountState accountState;

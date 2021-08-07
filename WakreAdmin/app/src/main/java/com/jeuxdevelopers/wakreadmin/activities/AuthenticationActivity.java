@@ -29,10 +29,10 @@ public class AuthenticationActivity extends AppCompatActivity{
     }
 
     private void init() {
-        if (checkPermission()) {
-        } else {
-            requestPermission();
-        }
+//        if (checkPermission()) {
+//        } else {
+//            requestPermission();
+//        }
 
 
         navController = Navigation.findNavController(this, R.id.auth_host_fragment);

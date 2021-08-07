@@ -65,12 +65,11 @@ public class TransactionsListAdapter extends RecyclerView.Adapter<TransactionsLi
             this.binding = binding;
         }
 
-        @SuppressLint({"SetTextI18n", "UseCompatLoadingForDrawables"})
+        @SuppressLint({"SetTextI18n", "UseCompatLoadingForDrawables", "DefaultLocale"})
         void bind(TransactionModel model) {
             binding.tvId.setText(model.getTransactionId());
-
-            binding.chipTax.setText(model.getTax() + "$");
-
+            binding.chipTax.setText(String.format("%.2f", model.getTax()) + "$");
+            binding.tvAmount.setText(String.format("%.2f", model.getAmount()) + "$");
             binding.tvDate.setText(Utils.getDateFromMillies(model.getDate()));
 
             binding.getRoot().setOnClickListener(v -> clickListener.onTransactionClick(model));

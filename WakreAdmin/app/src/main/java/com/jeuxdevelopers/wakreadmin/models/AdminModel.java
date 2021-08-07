@@ -1,9 +1,8 @@
 package com.jeuxdevelopers.wakreadmin.models;
 
 public class AdminModel {
-    private String id, name;
-    private double amount;
-
+    private String id, name,email;
+    private double amount,deposits;
     public AdminModel() {
     }
 
@@ -29,5 +28,21 @@ public class AdminModel {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public double getDeposits() {
+        return deposits;
+    }
+
+    public void setDeposits(double deposits) {
+        this.deposits = deposits;
     }
 }
